@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flexy Free Bootstrap Admin Template by WrapPixel</title>
+  <link rel="shortcut icon" type="image/png" href="/dashboard-assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="/dashboard-assets/css/styles.min.css" />
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Include Sidebar -->
+    <%- include('partials/sidebar') %>
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!-- Include Header -->
+      <%- include('partials/header') %>
+
+      <div class="body-wrapper-inner">
+        <div class="container-fluid">
+          <!-- Include Body -->
+          <%- include(page) %>
+          <!-- Include Footer -->
+          <%- include('partials/footer') %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/dashboard-assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="/dashboard-assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/dashboard-assets/js/app.min.js"></script>
+  <script src="/dashboard-assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="/dashboard-assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="/dashboard-assets/libs/sweetalert2/sweetalert2.all.min.js"></script>
+  <!-- solar icons -->
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+
+</html>

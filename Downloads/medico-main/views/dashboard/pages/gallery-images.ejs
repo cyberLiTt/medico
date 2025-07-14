@@ -1,0 +1,99 @@
+<div class="row">
+  <!-- Gallery Upload Form -->
+  <div class="col-md-6">
+    <div class="card shadow">
+      <div class="card-body">
+        <h4 class="card-title mb-4">Upload Gallery Image</h4>
+        <form id="galleryForm" enctype="multipart/form-data">
+          <input type="hidden" name="type" value="gallery">
+          <div class="mb-3">
+            <label for="galleryImage" class="form-label">Image</label>
+            <input type="file" class="form-control" id="galleryImage" name="image" accept="image/*" required />
+            <img id="previewGalleryImage" src="" alt="Preview Image" class="img-fluid mt-2 rounded shadow-sm" style="max-height: 200px; display: none;" />
+          </div>
+
+          <div class="mb-3">
+            <label for="galleryName" class="form-label">Image Name</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-tag"></i></span>
+              <input type="text" class="form-control text-black" id="galleryName" name="name" placeholder="Enter image name" required />
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Upload Image</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Uploaded Gallery Images -->
+  <div class="col-md-6">
+    <div class="card shadow">
+      <div class="card-body">
+        <h4 class="card-title mb-3">Uploaded Gallery Images</h4>
+        <div id="galleryList" class="row g-3" style="max-height: 465px; overflow-y: auto;">
+          <!-- Injected gallery images here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Fullscreen Preview Modal -->
+<div class="modal fade" id="galleryPreviewModal" tabindex="-1" aria-labelledby="galleryPreviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex justify-content-center align-items-center">
+        <img id="fullscreenGalleryImage" src="" class="img-fluid rounded shadow-lg" alt="Full Preview" />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Edit Gallery Modal -->
+<div class="modal fade" id="editGalleryModal" tabindex="-1" aria-labelledby="editGalleryModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Gallery Image</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editGalleryForm" enctype="multipart/form-data">
+          <input type="hidden" id="editGalleryId">
+          <input type="hidden" name="type" value="gallery">
+
+          <div class="mb-3">
+            <label class="form-label">Current Image</label><br />
+            <img id="editGalleryCurrentImage" src="" class="img-fluid rounded mb-2" style="max-height: 200px;" />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Choose New Image</label>
+            <input type="file" class="form-control text-black" id="editGalleryImageInput" name="image" accept="image/*" />
+            <img id="editGalleryPreviewImage" src="" class="img-fluid mt-2" style="max-height: 200px; display: none;" />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Image Name</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-tag"></i></span>
+              <input type="text" class="form-control text-black" id="editGalleryName" name="name" required />
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-success">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

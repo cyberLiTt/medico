@@ -1,0 +1,120 @@
+<div class="row">
+  <!-- Doctor Form -->
+  <div class="col-12 col-md-6">
+    <div class="card shadow">
+      <div class="card-body">
+        <h4 class="card-title mb-4">Add New Doctor</h4>
+        <form id="doctorForm" method="POST" action="/departments/doctors/add">
+          <!-- Department Dropdown -->
+          <div class="mb-3">
+            <label for="category" class="form-label">Department</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-building"></i></span>
+              <select id="department" name="category" class="form-select border-0 text-black" required>
+                <option value="">Select a department</option>
+                <% categories.forEach(function(cat) { %>
+                  <option value="<%= cat._id %>"><%= cat.name %></option>
+                <% }); %>
+              </select>
+            </div>
+          </div>
+
+          <!-- Doctor Name -->
+          <div class="mb-3">
+            <label for="name" class="form-label">Doctor's Name</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-user"></i></span>
+              <input type="text" class="form-control text-black" id="name" name="name" placeholder="Enter doctor's name" required />
+            </div>
+          </div>
+
+          <!-- Phone Number -->
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-phone"></i></span>
+              <input type="tel" class="form-control text-black" id="phone" name="phone" placeholder="Enter phone number" required />
+            </div>
+          </div>
+
+          <!-- Email Address -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-mail"></i></span>
+              <input type="email" class="form-control text-black" id="email" name="email" placeholder="Enter email address" required />
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary w-100">Add Doctor</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Doctor List -->
+  <div class="col-md-6">
+    <div class="card shadow" style="overflow-y: scroll;">
+      <div class="card-body" style="padding-bottom: 30px;">
+        <h4 class="card-title mb-4">Doctors List</h4>
+        <div id="doctorList" class="comment-widgets scrollable common-widget" style="height: 465px" data-simplebar>
+          <!-- The fetched doctors appear here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Edit Doctor Modal -->
+<div class="modal fade" id="editDoctorModal" tabindex="-1" aria-labelledby="editDoctorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header text-black">
+        <h5 class="modal-title" id="editDoctorModalLabel">Edit Doctor</h5>
+        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="editDoctorForm">
+          <input type="hidden" id="editDoctorId">
+          <input type="hidden" id="editDoctorDeptId">
+
+          <div class="mb-3">
+            <label for="editDoctorName" class="form-label">Doctor's Name</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-user"></i></span>
+              <input type="text" class="form-control text-black" id="editDoctorName" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="editDoctorEmail" class="form-label">Email</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-mail"></i></span>
+              <input type="email" class="form-control text-black" id="editDoctorEmail" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="editDoctorPhone" class="form-label">Phone</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-phone"></i></span>
+              <input type="tel" class="form-control text-black" id="editDoctorPhone" required>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-success">Update Doctor</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

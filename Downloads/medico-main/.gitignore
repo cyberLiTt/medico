@@ -1,0 +1,61 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Environment variables
+.env
+.env.*.local
+package-lock.json
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Build / coverage directories
+dist/
+build/
+coverage/
+
+# IDE/Editor folders
+.vscode/
+.idea/
+
+# OS generated files
+*.swp
+*.swo
+
+# Optional: If using PM2
+pids/
+*.pid
+ecosystem.config.js
+
+# Optional: If using uploads
+uploads/
+
+# Optional: Public cache
+public/cache/
+
+# Optional: Database or local data
+data/
+*.sqlite
+*.db
+
+# Optional: Temp files
+tmp/
+temp/
+
+# Optional: If using EJS partials
+views/partials/*~
