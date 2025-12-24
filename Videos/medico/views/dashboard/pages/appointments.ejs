@@ -1,0 +1,33 @@
+<div class="row mt-4">
+  <div class="col-12 mb-4">
+    <!-- Use flex-column on small screens, row on md+ -->
+    <div class="d-flex flex-column flex-md-row gap-3 justify-content-md-between text-center">
+      <button class="btn btn-primary btn-lg w-100 w-md-auto px-md-5" id="btnPending">Pending</button>
+      <button class="btn btn-success btn-lg w-100 w-md-auto px-md-5" id="btnAttended">Attended</button>
+      <button class="btn btn-danger btn-lg w-100 w-md-auto px-md-5" id="btnRejected">Rejected</button>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="card shadow">
+      <div class="card-body">
+        <div class="d-md-flex align-items-center mb-3">
+          <div>
+            <h4 class="card-title">Appointment Records</h4>
+            <p class="card-subtitle">Click the buttons above to view categorized appointments</p>
+          </div>
+        </div>
+
+        <div class="comment-widgets scrollable mb-2 common-widget mt-4" 
+             style="height: 500px; overflow-y: auto;" 
+             data-simplebar 
+             id="appointmentList">
+          <!-- Dynamic content will be injected here -->
+        </div>
+        
+        <!-- 🔽 Pagination Buttons Appear Here -->
+        <div id="paginationControls" class="mt-3 d-flex justify-content-center flex-wrap"></div>
+      </div>
+    </div>
+  </div>
+</div>

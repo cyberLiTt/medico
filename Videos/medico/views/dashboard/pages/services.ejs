@@ -1,0 +1,81 @@
+<div class="row">
+  <!-- Service Form -->
+  <div class="col-md-6">
+    <div class="card shadow">
+      <div class="card-body">
+        <h4 class="card-title">Create Service</h4>
+        <form id="serviceForm" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="serviceImage" class="form-label">Image</label>
+                <input type="file" class="form-control" id="serviceImage" name="image" accept="image/*" />
+                <img id="previewImage" src="" alt="Preview Image" class="img-fluid mt-2" style="max-height:200px; display:none;">
+            </div>
+          <div class="mb-3">
+            <label for="serviceTitle" class="form-label">Title</label>
+            <div class="input-group">
+                <span class="input-group-text bg-light"><i class="ti ti-file-text"></i></span>
+                <input type="text" class="form-control text-black" id="serviceTitle" name="title" placeholder="Enter service title" required />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="serviceDescription" class="form-label">Description</label>
+            <textarea class="form-control text-black" id="serviceDescription" name="description" rows="7"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Service List -->
+  <div class="col-md-6">
+    <div class="card shadow">
+      <div class="card-body">
+        <h4 class="card-title">Services</h4>
+        <div id="serviceList" class="comment-widgets scrollable common-widget" data-simplebar="" style="height: 465px; overflow-y: auto;">
+          <!-- Fetched services will be injected here -->
+        </div>
+        <div id="paginationControls" class="mt-3 d-flex justify-content-center flex-wrap"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Edit Service Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit Service</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editForm" enctype="multipart/form-data">
+            <input type="hidden" id="editId">
+            <div class="mb-3">
+                <label for="currentImage" class="form-label">Current Image</label><br/>
+                <img id="currentImage" src="" alt="Current Service Image" class="img-fluid mb-2" style="max-height:200px;">
+            </div>
+            <div class="mb-3">
+                <label for="editImage" class="form-label">Change Image</label>
+                <input type="file" class="form-control" id="editImage" name="image" accept="image/*" />
+                <img id="previewEditImage" src="" alt="Preview Image" class="img-fluid mt-2" style="max-height:200px; display:none;">
+            </div>
+            <div class="mb-3">
+                <label for="editTitle" class="form-label">Title</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light"><i class="ti ti-file-text"></i></span>
+                  <input type="text" class="form-control text-black" id="editTitle" name="title" required>
+                </div>
+            </div>
+            <div class="mb-3">
+              <label for="editDescription" class="form-label">Description</label>
+              <textarea class="form-control text-black" id="editDescription" name="description" rows="7"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,108 @@
+<div class="row">
+  <!-- Form to Add Department -->
+  <div class="col-lg-6 col-12 mb-4">
+    <div class="card shadow h-100">
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between">
+          <h4 class="card-title mb-0">Create Department</h4>
+        </div>
+        <form id="departmentForm" class="mt-4" enctype="multipart/form-data">
+          <!-- Department Image Upload -->
+          <div class="mb-3">
+            <label for="deptImage" class="form-label">Department Image</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-camera"></i></span>
+              <input type="file" class="form-control text-black" id="deptImage" name="departmentImage" accept="image/*" required />
+            </div>
+            <div class="mt-2">
+              <img id="previewDeptPic" class="rounded d-none" style="width: 200px; max-height:200px; object-fit: fit;">
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="deptName" class="form-label">Department Name</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light">
+                <i class="ti ti-briefcase text-black"></i>
+              </span>
+              <input type="text" class="form-control text-black" id="deptName" name="name" placeholder="e.g. Radiology" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="deptDesc" class="form-label">Description</label>
+            <textarea class="form-control text-black" id="deptDesc" name="description" rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Create Department</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Department List -->
+  <div class="col-lg-6 col-12 mb-4">
+    <div class="card shadow h-100">
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between">
+          <h4 class="card-title mb-0">Departments</h4>
+        </div>
+        <div class="dept-data mt-4">
+          <!-- The departments will apear here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Edit Department Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header text-black">
+        <h5 class="modal-title" id="editModalLabel">Edit Department</h5>
+        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="editDeptForm">
+          <input type="hidden" id="editDeptId">
+
+          <!-- Current Department Image -->
+          <div class="mb-3">
+            <label class="form-label d-block">Current Department Image</label>
+            <img id="currentDeptPic" src="" class="rounded" style="width: 200px; max-height:200px; object-fit: cover;">
+          </div>
+
+          <!-- Change Department Image -->
+          <div class="mb-3">
+            <label for="editDeptPic" class="form-label">Change Department Image</label>
+            <input type="file" class="form-control" id="editDeptPic" name="departmentImage" accept="image/*" required>
+            <div class="mt-2">
+              <img id="previewEditDeptPic" class="rounded d-none" style="width: 200px; max-height:200px; object-fit: fit;">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="editDeptName" class="form-label">Department Name</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-briefcase"></i></span>
+              <input type="text" class="form-control text-black" id="editDeptName" name="name" placeholder="Enter department name" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="editDeptDesc" class="form-label">Description</label>
+            <textarea class="form-control text-black" id="editDeptDesc" name="description" rows="4" placeholder="Enter department description" required></textarea>
+          </div>
+
+            <button type="submit" class="btn btn-success">Update Department</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,125 @@
+<div class="row">
+  <!-- Image Upload Form -->
+  <div class="col-md-6">
+    <div class="card shadow">
+      <div class="card-body">
+        <h4 class="card-title mb-4">Upload Carousel Image</h4>
+        <form id="carouselForm" enctype="multipart/form-data">
+          <input type="hidden" name="type" value="carousel">
+          <div class="mb-3">
+            <label for="carouselImage" class="form-label">Image</label>
+            <input type="file" class="form-control" id="carouselImage" name="image" accept="image/*" required />
+            <img id="previewCarouselImage" src="" alt="Preview Image" class="img-fluid mt-2 rounded shadow-sm" style="max-height: 200px; display: none;" />
+          </div>
+
+          <div class="mb-3">
+            <label for="carouselTitle" class="form-label">Title</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light">
+                <i class="ti ti-heading"></i> <!-- Title icon -->
+              </span>
+              <input type="text" class="form-control text-black" id="carouselTitle" name="name" placeholder="Enter slide title" required />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="carouselDescription" class="form-label">Description</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light">
+                <i class="ti ti-align-left"></i> <!-- Description icon -->
+              </span>
+              <textarea class="form-control text-black" id="carouselDescription" name="description" rows="2" placeholder="Enter slide description" required></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Upload Image</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Uploaded Images List -->
+  <div class="col-md-6">
+    <div class="card shadow">
+      <div class="card-body">
+        <h4 class="card-title mb-3">Uploaded Carousel Images</h4>
+        <div id="carouselList" class="row g-3" style="max-height: 465px; overflow-y: auto;">
+          <!-- Injected carousel images -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Image Fullscreen Preview Modal -->
+<div class="modal fade" id="imagePreviewModal" tabindex="-1" aria-labelledby="imagePreviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex justify-content-center align-items-center">
+        <img id="fullscreenImage" src="" class="img-fluid rounded shadow-lg" alt="Full Preview" />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Edit Carousel Modal -->
+<div class="modal fade" id="editCarouselModal" tabindex="-1" aria-labelledby="editCarouselModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Carousel Image</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editCarouselForm" enctype="multipart/form-data">
+          <input type="hidden" id="editCarouselId" />
+          <input type="hidden" name="type" value="carousel" />
+
+          <!-- Current Image -->
+          <div class="mb-3">
+            <label class="form-label">Current Image</label><br />
+            <img id="editCurrentImage" src="" class="img-fluid rounded mb-2" style="max-height: 200px;" />
+          </div>
+
+          <!-- Upload New Image -->
+          <div class="mb-3">
+            <label class="form-label">Choose New Image</label>
+            <input type="file" class="form-control text-black" id="editCarouselImageInput" name="image" accept="image/*" />
+            <img id="editPreviewImage" src="" class="img-fluid mt-2" style="max-height: 200px; display: none;" />
+          </div>
+
+          <!-- Carousel Title -->
+          <div class="mb-3">
+            <label class="form-label">Title</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light text-black">
+                <i class="ti ti-heading"></i>
+              </span>
+              <input type="text" class="form-control text-black" id="editCarouselName" name="name" />
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light">
+                <i class="ti ti-align-left"></i>
+              </span>
+              <textarea class="form-control text-black" id="editCarouselDescription" name="description" rows="2"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-success">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

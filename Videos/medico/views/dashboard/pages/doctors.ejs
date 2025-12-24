@@ -1,0 +1,180 @@
+<div class="row">
+  <!-- Doctor Form -->
+  <div class="col-12 col-md-6">
+    <div class="card shadow">
+      <div class="card-body">
+        <h4 class="card-title mb-4">Add New Doctor</h4>
+        <form id="doctorForm" method="POST" enctype="multipart/form-data">
+          <!-- Department Dropdown -->
+          <div class="mb-3">
+            <label for="department" class="form-label">Department</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-building"></i></span>
+              <select id="department" name="department" class="form-select border-0 text-black" required>
+                <option value="">Select a department</option>
+                <% categories.forEach(function(cat) { %>
+                  <option value="<%= cat._id %>"><%= cat.name %></option>
+                <% }); %>
+              </select>
+            </div>
+          </div>
+
+          <!-- Profile Picture -->
+          <div class="mb-3">
+            <label for="profilePic" class="form-label">Profile Picture</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-camera"></i></span>
+              <input type="file" class="form-control text-black" id="profilePic" name="profilePic" accept="image/*" required/>
+            </div>
+            <div class="mt-2">
+              <img id="previewDoctorPic" class="rounded d-none" style="width: 200px; max-height:200px; object-fit: cover;">
+            </div>
+          </div>
+
+          <!-- Doctor Name -->
+          <div class="mb-3">
+            <label for="name" class="form-label">Doctor's Name</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-user"></i></span>
+              <input type="text" class="form-control text-black" id="name" name="name" placeholder="Enter doctor's name" required />
+            </div>
+          </div>
+
+          <!-- Phone Number -->
+          <div class="mb-3">
+            <label for="phone" class="form-label">WhatsApp Number</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-phone"></i></span>
+              <input type="tel" class="form-control text-black" id="phone" name="phone" placeholder="Enter whatsapp number" required />
+            </div>
+          </div>
+
+          <!-- Email Address -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-mail"></i></span>
+              <input type="email" class="form-control text-black" id="email" name="email" placeholder="Enter email address" required />
+            </div>
+          </div>
+
+          <!-- Doctor Role -->
+          <div class="mb-3">
+            <label for="role" class="form-label">Role</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-id-badge"></i></span>
+              <input type="text" class="form-control text-black" id="role" name="role" placeholder="e.g. Consultant Gynecologist" required />
+            </div>
+          </div>
+
+          <!-- Doctor Description -->
+          <div class="mb-3">
+            <label for="doctorDescription" class="form-label">Short Description / Bio</label>
+            <textarea class="form-control text-black" id="doctorDescription" name="description" placeholder="Brief description of the doctor" rows="3"></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary w-100">Add Doctor</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Doctor List -->
+  <div class="col-md-6">
+    <div class="card shadow" style="overflow-y: scroll;">
+      <div class="card-body" style="padding-bottom: 30px;">
+        <h4 class="card-title mb-4">Doctors List</h4>
+        <div id="doctorList" class="comment-widgets scrollable common-widget" style="height: 465px" data-simplebar>
+          <!-- The fetched doctors appear here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Edit Doctor Modal -->
+<div class="modal fade" id="editDoctorModal" tabindex="-1" aria-labelledby="editDoctorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header text-black">
+        <h5 class="modal-title" id="editDoctorModalLabel">Edit Doctor</h5>
+        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="editDoctorForm" enctype="multipart/form-data">
+          <input type="hidden" id="editDoctorId" name="doctorId">
+          <input type="hidden" id="editDoctorDeptId" name="departmentId">
+
+          <!-- Existing Profile Picture -->
+          <div class="mb-3">
+            <label class="form-label d-block">Current Profile Picture</label>
+            <img id="currentDoctorPic" src="" class="rounded" style="width: 200px; max-height:200px; object-fit: cover;">
+          </div>
+
+          <!-- New Profile Picture Upload -->
+          <div class="mb-3">
+            <label for="editDoctorPic" class="form-label">Change Profile Picture</label>
+            <input type="file" class="form-control" id="editDoctorPic" name="profilePic" accept="image/*">
+            <div class="mt-2">
+              <img id="previewEditDoctorPic" class="rounded d-none" style="width: 200px; max-height:200px; object-fit: cover;">
+            </div>
+          </div>
+
+          <!-- Doctor's Name -->
+          <div class="mb-3">
+            <label for="editDoctorName" class="form-label">Doctor's Name</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-user"></i></span>
+              <input type="text" class="form-control text-black" id="editDoctorName" name="name" required>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label for="editDoctorEmail" class="form-label">Email</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-mail"></i></span>
+              <input type="email" class="form-control text-black" id="editDoctorEmail" name="email" required>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="mb-3">
+            <label for="editDoctorPhone" class="form-label">WhatsApp Number</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-phone"></i></span>
+              <input type="tel" class="form-control text-black" id="editDoctorPhone" name="phone" required>
+            </div>
+          </div>
+
+
+          <!-- Doctor Role -->
+          <div class="mb-3">
+            <label for="editDoctorRole" class="form-label">Role</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="ti ti-id-badge"></i></span>
+              <input type="text" class="form-control text-black" id="editDoctorRole" name="role" required>
+            </div>
+          </div>
+
+          <!-- Doctor Description -->
+          <div class="mb-3">
+            <label for="editDoctorDescription" class="form-label">Short Description / Bio</label>
+            <textarea class="form-control text-black" id="editDoctorDescription" name="description" rows="3"></textarea>
+          </div>
+
+
+          <button type="submit" class="btn btn-success w-100">Update Doctor</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
